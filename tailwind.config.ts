@@ -37,10 +37,10 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
-      // colors: {
-      //   "yellow-playground": "#FFB900",
-      //   "yellow-btn-ground": "#F29A00",
-      // },
+      colors: {
+        // "green-playground": "#49913b",
+        "green-btn-ground": "#49913b",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
