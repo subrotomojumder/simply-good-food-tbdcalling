@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import Providers from "@/lib/Providers/Providers";
 
 const fontSans = FontSans({
-  subsets: ["latin"],
+  subsets: ["vietnamese"],
   variable: "--font-sans",
 });
 export const metadata: Metadata = {

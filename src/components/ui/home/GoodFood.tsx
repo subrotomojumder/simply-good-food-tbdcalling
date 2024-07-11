@@ -1,7 +1,7 @@
-import Container from "@/components/Container";
-import SectionHeading from "./SectionHeading";
 import { foodFeatures } from "@/assets";
+import Container from "@/components/Container";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 const GoodFood = () => {
   const featuresData = [
@@ -24,7 +24,7 @@ const GoodFood = () => {
   return (
     <Container>
       <SectionHeading heading="Why Simply Good Food" />
-      <div className="flex flex-col lg:flex-row justify-between gap-16 mt-14 px-10 lg:px-0">
+      <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-16 mt-14 px-10 lg:px-0">
         {featuresData.map((item, index) => (
           <div key={index} className="h-full text-center space-y-4">
             <div className="max-w-24 mx-auto">
@@ -36,7 +36,7 @@ const GoodFood = () => {
                 alt="image"
               />
             </div>
-            <h4 className="text-2xl font-semibold text-gray-700">
+            <h4 className="text-xl md:text-2xl font-semibold text-gray-700">
               {item.title}
             </h4>
             <p className="text-sm text-gray-600">{item.des}</p>

@@ -1,8 +1,8 @@
 import Container from "@/components/Container";
-import { Button } from "../button";
 import { ArrowUpRight } from "lucide-react";
 import BannerCarousel from "./BannerCarousel";
 import { carousel } from "@/assets";
+import { Button } from "../button";
 
 const Banner = () => {
   const bannerImages = [carousel.fasta, carousel.verger, carousel.chicken];
@@ -20,7 +20,9 @@ const Banner = () => {
           <div className="space-y-6 text-center lg:text-left ">
             <div className="text-5xl lg:text-7xl font-semibold leading-snug">
               <span> Keep Track of</span> <br />
-              <span className="text-[#237314] inline-block lg:pt-3">Fitness Goal </span>
+              <span className="text-[#237314] inline-block lg:pt-3">
+                Fitness Goal{" "}
+              </span>
             </div>
             <h5 className="text-xl lg:text-3xl font-medium">
               Order on Simply Good Food

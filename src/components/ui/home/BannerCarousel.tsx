@@ -34,8 +34,8 @@ const BannerCarousel = ({ images }: TCarouselProps) => {
       </CarouselContent>
 
       <div>
-        <CarouselPrevious className="absolute top-[49.8%] left-[1.5%] border-none bg-[#8ec285] hover:bg-[#62b354]" />
-        <CarouselNext className="absolute top-[49.8%] right-[1%] border-none bg-[#8ec285] hover:bg-[#62b354]" />
+        <CarouselPrevious className="absolute top-[49.8%] left-[1.5%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white" />
+        <CarouselNext className="absolute top-[49.8%] right-[1%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white" />
       </div>
     </Carousel>
   );
