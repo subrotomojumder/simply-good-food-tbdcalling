@@ -1,0 +1,13 @@
+.bg-gradient {
+    border-width: 50px;
+    border-radius: 100px;
+    border-style: solid;
+    border-image: linear-gradient(
+        to bottom,
+        rgba(104, 165, 92, 255),
+        rgba(136, 184, 127, 255)
+      )
+      1;
+  }
+  
+ 

@@ -29,15 +29,15 @@ const Navbar = () => {
     setIsOpen(false);
   }, [path]);
   return (
-    <div className="shadow-lg sticky top-0 left-0 w-full z-[999] ">
-      <Container className="max-w-full text-center py-1.5 lg:py-2.5 bg-[#fdb64e]">
+    <div className="shadow-lg sticky top-0 left-0 w-full z-[999] bg-white ">
+      <Container className="max-w-full xl:max-w-full text-center py-1.5 lg:py-2 bg-[#fdb64e]">
         <span className="text-xs font-medium text-gray-100 tracking-wider">
           %% Free shipping on all orders %%
         </span>
       </Container>
       <Container className="relative">
-        <header className={cn("py-1 bg-white ")}>
-          <nav className="h-full w-full mx-auto flex justify-between items-center px-4 md:px-[30px] ">
+        <header className={cn("py-1")}>
+          <nav className="h-full w-full mx-auto flex justify-between items-center">
             <Link href={"/"}>
               <div className="max-w-14 lg:max-w-20">
                 <Image

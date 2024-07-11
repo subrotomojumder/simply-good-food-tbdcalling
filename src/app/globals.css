@@ -1,4 +1,33 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+.bg-gradient {
+  border-width: 50px;
+  border-radius: 100px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to bottom,
+      rgba(104, 165, 92, 255),
+      rgba(136, 184, 127, 255)
+    )
+    1;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -1px; /* Adjust the offset */
+  left: -1px; /* Adjust the offset */
+  right: -1px; /* Adjust the offset */
+  bottom: -1px; /* Adjust the offset */
+  z-index: -1;
+  border: 50px solid transparent; /* Adjust the border width */
+  border-image: linear-gradient(45deg, #f3ec78, #af4261);
+  border-image-slice: 1;
+  border-radius: inherit;
+}
