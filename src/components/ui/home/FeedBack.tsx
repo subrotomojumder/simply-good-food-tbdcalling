@@ -57,7 +57,7 @@ const FeedBack = () => {
     },
   ];
   return (
-    <Container>
+    <Container className="max-w-full">
       <SectionHeading heading="Feedbacks" />
       <div className="mt-8">
         <Carousel
@@ -70,9 +70,9 @@ const FeedBack = () => {
             {feedbackData.map((item, index) => (
               <CarouselItem
                 key={index}
-                className="md:basis-1/2 lg:basis-[46%] px-3 md:px-4"
+                className="md:basis-1/2 lg:basis-[46%] px-6 md:px-8"
               >
-                <div className="grid grid-cols-8 items-center gap-4 bg-gray-100/80 border px-5 py-8">
+                <div className="grid grid-cols-8 items-center gap-4 bg-gray-100/80 border px-5 py-10">
                   <div className="w-full col-span-2">
                     <Image
                       src={item.image}

@@ -25,7 +25,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <span className="font-medium ">$</span>{" "}
           <span className="font-semibold">{product.price}</span>
         </p>
-        <Button className="bg-green-btn-ground w-full font-normal">
+        <Button className="bg-green-btn-ground w-full font-normal rounded-xl">
           Add to Cart
         </Button>
         <div className="flex justify-center gap-3">
