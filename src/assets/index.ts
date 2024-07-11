@@ -2,6 +2,7 @@ const assets = {
   images: {
     navLogo: require("@/assets/images/header-logo.png"),
     footerLogo: require("@/assets/images/footer-logo.png"),
+    moderateImg: require("@/assets/images/moderate-img_1.png"),
   },
   carousel: {
     fasta: require("@/assets/images/banner-food_1.png"),

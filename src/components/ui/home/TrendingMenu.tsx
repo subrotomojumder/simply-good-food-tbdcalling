@@ -73,18 +73,18 @@ const TrendingMenu = () => {
           }}
           className="w-full"
         >
-          <CarouselContent className="mx-14 lg:mx-24">
+          <CarouselContent className="mx-[7%] max-w-6xl xl:mx-auto">
             {productData.map((product, index) => (
               <CarouselItem
                 key={index}
-                className="md:basis-1/2 lg:basis-[30%] px-4"
+                className="md:basis-1/2 lg:basis-[30%] px-3 md:px-4"
               >
                 <ProductCard product={product} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-[2%] lg:left-[4%] text-gray-700" />
-          <CarouselNext className="absolute right-[2%] lg:right-[4%] text-gray-700 " />
+          <CarouselPrevious className="absolute left-[2%] lg:left-[4%] text-gray-700 bg-blue-300/70" />
+          <CarouselNext className="absolute right-[2%] lg:right-[4%] text-gray-700 bg-blue-300/70 " />
         </Carousel>
       </div>
     </Container>
