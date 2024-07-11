@@ -66,7 +66,7 @@ const FeedBack = () => {
           }}
           className="w-full"
         >
-          <CarouselContent className="">
+          <CarouselContent className="mx-[5%]">
             {feedbackData.map((item, index) => (
               <CarouselItem
                 key={index}

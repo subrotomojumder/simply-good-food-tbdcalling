@@ -1,6 +1,6 @@
 export const navRoutes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
   },
   {

@@ -29,7 +29,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, [path]);
   return (
-    <div className="shadow-lg sticky top-0 left-0 w-full z-[999] bg-white ">
+    <div className="sticky top-0 left-0 w-full z-[999] shadow-lg bg-white ">
       <Container className="max-w-full xl:max-w-full text-center py-1.5 lg:py-2 bg-[#fdb64e]">
         <span className="text-xs font-medium text-gray-100 tracking-wider">
           %% Free shipping on all orders %%
@@ -39,7 +39,7 @@ const Navbar = () => {
         <header className={cn("py-1")}>
           <nav className="h-full w-full mx-auto flex justify-between items-center">
             <Link href={"/"}>
-              <div className="max-w-14 lg:max-w-20">
+              <div className="max-w-14 lg:max-w-[70px]">
                 <Image
                   src={images.navLogo}
                   alt="logo"
@@ -86,7 +86,7 @@ const Navbar = () => {
               <Link href={"/register"}>
                 <Button
                   size={"sm"}
-                  className="px-5 bg-green-btn-ground rounded-lg border border-green-btn-ground "
+                  className="px-5 bg-green-btn-ground rounded-lg border border-green-btn-ground font-light "
                 >
                   Sign Up
                 </Button>

@@ -16,7 +16,7 @@ const assets = {
   },
   users: {
     users_1: require("@/assets/users/user_1.png"),
-    users_2: require("@/assets/users/user_2.png"),
+    users_2: require("@/assets/users/users_2.png"),
   },
 };
 export const { images, carousel, foodFeatures, users } = assets;

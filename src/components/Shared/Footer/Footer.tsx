@@ -11,12 +11,12 @@ const Footer = () => {
   return (
     <div className="bg-gray-50">
       <Container className="grid grid-cols-12 gap-x-3 gap-y-12 py-0 pt-8 pb-12">
-        <div className="col-span-5 lg:col-span-3 w-full max-w-40">
+        <div className="col-span-5 lg:col-span-3 w-full max-w-36">
           <Image
             src={images.footerLogo}
             className=""
-            height={700}
-            width={700}
+            height={800}
+            width={800}
             alt="image"
           />
         </div>
