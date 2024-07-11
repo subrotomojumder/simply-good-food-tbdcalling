@@ -3,7 +3,7 @@ import { Button } from "./button";
 
 const ShoppingCartBtn = () => {
   return (
-    <div className="fixed top-[90%] right-6 ">
+    <div className="fixed top-[90%] z-[999] right-6 ">
       <Button
         variant={"outline"}
         className="relative shadow-lg border border-white text-white  hover:text-white bg-[#277e16] hover:bg-[#2f971a] rounded-full py-[25px]"

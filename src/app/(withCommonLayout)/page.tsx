@@ -1,4 +1,5 @@
 import Banner from "@/components/ui/home/Banner";
+import FeedBack from "@/components/ui/home/FeedBack";
 import GoodFood from "@/components/ui/home/GoodFood";
 import Moderate from "@/components/ui/home/Moderate";
 import Questions from "@/components/ui/home/Questions";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <TrendingMenu />
       <Moderate />
       <Questions />
+      <FeedBack />
     </>
   );
 }

@@ -2,7 +2,6 @@ import Container from "@/components/Container";
 import React from "react";
 import SectionHeading from "./SectionHeading";
 
-// import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
