@@ -29,21 +29,17 @@ const Navbar = () => {
     setIsOpen(false);
   }, [path]);
   return (
-    <div className="">
-      <Container className="max-w-full text-center py-2.5 bg-[#fdb64e]">
+    <div className="shadow-lg sticky top-0 left-0 w-full z-[999] ">
+      <Container className="max-w-full text-center py-1.5 lg:py-2.5 bg-[#fdb64e]">
         <span className="text-xs font-medium text-gray-100 tracking-wider">
           %% Free shipping on all orders %%
         </span>
       </Container>
-      <Container>
-        <header
-          className={cn(
-            "sticky top-0 left-0 w-full z-[999] py-1 md:py-2 transition-all duration-300 bg-white "
-          )}
-        >
-          <nav className="h-full w-full max-w-[1480px] mx-auto flex justify-between items-center px-4 md:px-[30px] ">
+      <Container className="relative">
+        <header className={cn("py-1 bg-white ")}>
+          <nav className="h-full w-full mx-auto flex justify-between items-center px-4 md:px-[30px] ">
             <Link href={"/"}>
-              <div className="max-w-16 md:max-w-20">
+              <div className="max-w-14 lg:max-w-20">
                 <Image
                   src={images.navLogo}
                   alt="logo"
@@ -55,17 +51,22 @@ const Navbar = () => {
             <Button
               onClick={() => setIsOpen((c) => !c)}
               variant={"ghost"}
-              className=" lg:hidden rounded-[2px] z-10"
+              className={cn("lg:hidden rounded-[2px] z-10 ", {
+                "bg-gray-200": isOpen,
+              })}
             >
-              <AlignJustify className="shrink-0 size-[22px] sm:size-6" />
+              <AlignJustify className={cn("shrink-0 size-[22px] sm:size-6")} />
             </Button>
             {/* large device */}
-            <ul className="hidden lg:flex justify-around space-x-5 divide-x">
+            <ul className="hidden lg:flex justify-around space-x-5 divide-x divide-slate-300">
               {navRoutes.map((item: TNavItem, i) => (
                 <li
-                  className={cn("text-sm text-gray-500 pl-5 pr-2 py-1 transition-all", {
-                    "text-green-400": i === 0,
-                  })}
+                  className={cn(
+                    "text-gray-500 pl-5 pr-2 transition-all text-sm lg:text-base",
+                    {
+                      "text-green-600": i === 0,
+                    }
+                  )}
                   key={i}
                 >
                   <Link href={item.path}>{item.name}</Link>
@@ -73,20 +74,29 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="hidden lg:flex gap-4">
-              <Link href={"#login"}>
-                <Button className="py-0 rounded-lg border-green-btn-ground bg-gray-100" variant={"outline"}>
+              <Link href={"/login"}>
+                <Button
+                  size={"sm"}
+                  className="px-5 rounded-lg border-green-btn-ground bg-gray-100"
+                  variant={"outline"}
+                >
                   Log in
                 </Button>
               </Link>
-              <Link href={"#login"}>
-                <Button className="bg-green-btn-ground rounded-lg border border-green-btn-ground ">Sign Up</Button>
+              <Link href={"/register"}>
+                <Button
+                  size={"sm"}
+                  className="px-5 bg-green-btn-ground rounded-lg border border-green-btn-ground "
+                >
+                  Sign Up
+                </Button>
               </Link>
             </div>
             {/* small device */}
             <div
               onClick={handleOutsideClose}
               className={cn(
-                " lg:hidden fixed inset-0 bg-gray-900/50 invisible ",
+                " lg:hidden fixed inset-0 bg-gray-900/50 invisible",
                 {
                   visible: isOpen,
                 }
@@ -94,15 +104,21 @@ const Navbar = () => {
             >
               <ul
                 ref={containerRef}
-                className="flex flex-col text-end divide-y divide-gray-500 absolute right-0 top-12 md:top-16 bg-white dark:bg-slate-600 py-2 px-4"
+                className={cn(
+                  "flex flex-col text-end divide-y divide-gray-500 absolute right-0 top-24 bg-white dark:bg-slate-600 py-2 px-4 translate-x-16",
+                  {
+                    "translate-x-0 duration-300": isOpen,
+                  }
+                )}
               >
                 {navRoutes.map((item: TNavItem, i) => (
                   <Link href={item.path} key={i}>
                     <li
                       className={cn(
-                        "rounded-[2px] hover:bg-sky-500/80 hover:text-white font-[500] px-4 py-2",
+                        "rounded-[2px] hover:bg-sky-500/90 text-slate-600 hover:text-white font-[500] px-4 py-2",
                         {
                           "transition-all": isOpen,
+                          "text-green-600": i === 0,
                         }
                       )}
                     >
@@ -111,10 +127,13 @@ const Navbar = () => {
                   </Link>
                 ))}
                 <li className="py-2">
-                  <Link href={"#login"}>
-                    <button className="bg-green-500 active:bg-green-600 px-2 py-1 rounded-md w-full">
+                  <Link href={"/login"}>
+                    <Button
+                      size={"sm"}
+                      className="bg-green-btn-ground active:bg-green-600 px-2 py-1 rounded-md w-full"
+                    >
                       Login
-                    </button>
+                    </Button>
                   </Link>
                 </li>
               </ul>
