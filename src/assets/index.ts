@@ -3,10 +3,15 @@ const assets = {
     navLogo: require("@/assets/images/header-logo.png"),
     footerLogo: require("@/assets/images/footer-logo.png"),
   },
- carousel: {
+  carousel: {
     fasta: require("@/assets/images/banner-food_1.png"),
     verger: require("@/assets/images/banner-food_3.jpg"),
     chicken: require("@/assets/images/banner-food_2.jpg"),
   },
+  foodFeatures: {
+    features_1: require("@/assets/images/food-feature_1.png"),
+    features_2: require("@/assets/images/food-features_2.png"),
+    features_3: require("@/assets/images/food-features_3.png"),
+  },
 };
-export const { images, carousel } = assets;
+export const { images, carousel, foodFeatures } = assets;

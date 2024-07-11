@@ -35,7 +35,7 @@ const Navbar = () => {
           %% Free shipping on all orders %%
         </span>
       </Container>
-      <Container className="relative">
+      <Container className="relative py-0">
         <header className={cn("py-1")}>
           <nav className="h-full w-full mx-auto flex justify-between items-center">
             <Link href={"/"}>

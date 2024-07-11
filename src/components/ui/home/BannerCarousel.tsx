@@ -17,8 +17,8 @@ const BannerCarousel = ({ images }: TCarouselProps) => {
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <div>
-              <div className="h-full w-full border-[30px] lg:border-[50px] border-[linear-gradient(to bottom, #33ccff 100%, #ff99cc 42%)] rounded-full p-7 lg:p-10">
-                <div className="rounded-full bg-none border">
+              <div className="h-full w-full border-[30px] lg:border-[50px] border-[linear-gradient(to bottom, #33ccff 100%, #ff99cc 42%)] rounded-full shadow p-7 lg:p-10">
+                <div className="rounded-full bg-none border shadow">
                   <Image
                     src={image}
                     className="rounded-full"
