@@ -37,6 +37,7 @@ const Questions = () => {
         des="Simply Good Food prepares and delivers organically sourced, fresh meals to your door nationwide. Unlike other meal kit delivery
 services that need preparation and cleaning, our meals are delivered ready to consume. Our mission is to make healthy eating easy
 and enjoyable while not sacrificing flavor. Do you have a question regarding our shipping service?"
+className="px-10"
       />
       <Accordion
         type="single"

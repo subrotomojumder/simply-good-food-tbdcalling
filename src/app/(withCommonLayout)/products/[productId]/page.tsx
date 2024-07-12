@@ -34,7 +34,7 @@ const ProductDetails = ({
           </Button>
         </Link>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-6">
-          <div className="w-full overflow-hidden rounded-3xl border-8 h-[500px]">
+          <div className="w-full overflow-hidden rounded-3xl border-8 lg:h-[500px]">
             <Image
               src={product.image}
               className="object-cover h-full w-full"
@@ -75,7 +75,7 @@ const ProductDetails = ({
                 Add to Cart
               </Button>
             </div>
-            <div className="space-y-3.5">
+            <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <p className="font-medium text-gray-600">Ingredients</p>
                 <button className="bg-gray-100 rounded-full shadow-md p-0.5">
