@@ -19,6 +19,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { createElement, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
+import { signIn } from "next-auth/react";
+
 const loginSchema = z
   .object({
     userName: z.string().optional(),
@@ -33,15 +35,18 @@ const loginSchema = z
   })
   .refine(
     (data) => {
-      if (!data.confirmPassword) {
+      if (!data.confirmPassword || !data.password) {
         return true;
       }
-      if (data.password !== data.confirmPassword) {
+      if (data.password === data.confirmPassword) {
+        return true;
+      } else {
         return false;
       }
     },
     {
       message: "Password and confirm password be same!",
+      path: ["confirmPassword"]
     }
   );
 type TLoginData = z.infer<typeof loginSchema>;
@@ -61,10 +66,23 @@ const Register = () => {
       terms: false,
     },
   });
+
   const onSubmit = async (values: TLoginData) => {
     console.log(values);
+    // const res = await fetch("api/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
+    // if (res.ok) {
+    //   console.log("create success");
+    // } else {
+    //   const errorData = await res.json();
+    //   console.log("something went wrong", errorData.message);
+    // }
   };
-
   return (
     <div
       style={{
@@ -221,11 +239,6 @@ const Register = () => {
                       </button>
                     </div>
                     <FormMessage className="font-normal" />
-                    {Object.values(form.formState.errors).length === 1 && (
-                      <span className="text-sm text-red-500 dark:text-red-900">
-                        {Object.values(form.formState.errors)[0].message}
-                      </span>
-                    )}
                   </FormItem>
                 )}
               />
@@ -250,6 +263,7 @@ const Register = () => {
                   </FormItem>
                 )}
               />
+
               <div className="text-center">
                 <Button
                   size={"lg"}
@@ -275,6 +289,16 @@ const Register = () => {
                 </Link>
               </div>
             </form>
+            {/* <button
+                  type="button"
+                  onClick={() =>
+                    signIn("google", {
+                      callbackUrl: "http://localhost:3000/dashboard",
+                    })
+                  }
+                >
+                  reset
+                </button> */}
           </Form>
         </div>
       </Container>
