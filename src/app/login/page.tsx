@@ -16,17 +16,21 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Container from "@/components/Container";
 import { Checkbox } from "@/components/ui/checkbox";
+import { createElement, useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6, "Invalid Password !"),
-  terms: z.boolean().refine((val) => val === true, {
-    message: "Please accept the terms.",
-  }),
+  terms: z.boolean().optional(),
+  // .refine((val) => val === true, {
+  //   message: "Please accept the terms.",
+  // }),
 });
 type TLoginData = z.infer<typeof loginSchema>;
 
 const Login = () => {
+  const [showPass, setShowPass] = useState(false);
   const form = useForm<TLoginData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -38,6 +42,7 @@ const Login = () => {
   const onSubmit = async (values: TLoginData) => {
     console.log(values);
   };
+
   return (
     <div
       style={{
@@ -53,7 +58,7 @@ const Login = () => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6 w-full md:max-w-lg md:rounded-3xl px-6 md:px-12 py-10 bg-white/90 shadow-lg"
+              className="space-y-6 w-full md:max-w-lg md:rounded-3xl px-6 md:px-12 py-10 bg-gray-100/95 shadow-lg"
             >
               <h2 className="text-xl lg:text-2xl text-slate-800 font-semibold text-center">
                 Sign in to your account
@@ -71,12 +76,12 @@ const Login = () => {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-full py-4 px-4 h-11"
+                        className="rounded-full py-4 px-4 h-11 shadow-sm"
                         placeholder="subr@gmail.com"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="font-normal -pb-4" />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -84,18 +89,25 @@ const Login = () => {
                 name="password"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="relative">
                     <FormLabel className="text-base text-slate-600 pl-0.5">
                       Password
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-full py-4 px-4 h-11"
-                        placeholder="*********"
-                        type="password"
+                        className="rounded-full py-4 pl-4 pr-12 h-11 shadow-sm"
+                        placeholder={showPass ? "password" : "*********"}
+                        type={showPass ? "text" : "password"}
                         {...field}
                       />
                     </FormControl>
+                    <button
+                      onClick={() => setShowPass((c) => !c)}
+                      type="button"
+                      className="absolute right-4 bottom-2.5 outline-none focus:outline-none text-gray-500"
+                    >
+                      {createElement(showPass ? EyeOff : Eye, { size: "23" })}
+                    </button>
                     <FormMessage className="font-normal" />
                   </FormItem>
                 )}
@@ -109,6 +121,7 @@ const Login = () => {
                       <div className="flex items-center gap-2 pt-1.5">
                         <FormControl>
                           <Checkbox
+                            className="ring ring-blue-300 checked:ring-blue-500"
                             checked={field.value}
                             onCheckedChange={field.onChange}
                           />
@@ -117,7 +130,7 @@ const Login = () => {
                           Remember Password?
                         </FormLabel>
                       </div>
-                      <FormMessage className="font-normal -pb-4" />
+                      <FormMessage className="font-normal" />
                     </FormItem>
                   )}
                 />
@@ -140,7 +153,7 @@ const Login = () => {
                   Log in
                 </Button>
               </div>
-              <div className="flex justify-center items-center gap-2">
+              <div className="flex justify-center items-center gap-2 pt-2">
                 <span className="text-slate-500">Don’t have any account? </span>
                 <Link href={"/register"}>
                   <Button
