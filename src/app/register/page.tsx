@@ -19,21 +19,36 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { createElement, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-const loginSchema = z.object({
-  userName: z.string().optional(),
-  email: z.string().email(),
-  phone: z.string().optional(),
-  address: z.string().optional(),
-  password: z.string().min(6, "Invalid Password !"),
-  confirmPassword: z.string().min(6, "Invalid Password !"),
-  terms: z.boolean().refine((val) => val === true, {
-    message: "Please accept the terms.",
-  }),
-});
+const loginSchema = z
+  .object({
+    userName: z.string().optional(),
+    email: z.string().email(),
+    phone: z.string().optional(),
+    address: z.string().optional(),
+    password: z.string().min(6, "Invalid Password !"),
+    confirmPassword: z.string().min(6, "Invalid Password !"),
+    terms: z.boolean().refine((val) => val === true, {
+      message: "Please accept the terms.",
+    }),
+  })
+  .refine(
+    (data) => {
+      if (!data.confirmPassword) {
+        return true;
+      }
+      if (data.password !== data.confirmPassword) {
+        return false;
+      }
+    },
+    {
+      message: "Password and confirm password be same!",
+    }
+  );
 type TLoginData = z.infer<typeof loginSchema>;
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
+  const [showCPass, setShowCPass] = useState(false);
   const form = useForm<TLoginData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -49,6 +64,7 @@ const Register = () => {
   const onSubmit = async (values: TLoginData) => {
     console.log(values);
   };
+
   return (
     <div
       style={{
@@ -77,7 +93,7 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       User Name
                     </FormLabel>
                     <FormControl>
@@ -96,7 +112,7 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       Email
                     </FormLabel>
                     <FormControl>
@@ -115,7 +131,7 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       Contact no.
                     </FormLabel>
                     <FormControl>
@@ -134,7 +150,7 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       Contact no.
                     </FormLabel>
                     <FormControl>
@@ -153,7 +169,7 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       Password
                     </FormLabel>
                     <div className="relative">
@@ -182,27 +198,34 @@ const Register = () => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base text-slate-600 pl-0.5">
+                    <FormLabel className="text-base text-slate-600">
                       Confirm Password
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
                         <Input
                           className="rounded-full py-4 pl-4 pr-12 h-11 shadow-sm"
-                          placeholder={showPass ? "Password" : "*********"}
-                          type={showPass ? "text" : "password"}
+                          placeholder={showCPass ? "Password" : "*********"}
+                          type={showCPass ? "text" : "password"}
                           {...field}
                         />
                       </FormControl>
                       <button
-                        onClick={() => setShowPass((c) => !c)}
+                        onClick={() => setShowCPass((c) => !c)}
                         type="button"
                         className="absolute right-4 bottom-2.5 outline-none focus:outline-none text-gray-500"
                       >
-                        {createElement(showPass ? EyeOff : Eye, { size: "23" })}
+                        {createElement(showCPass ? EyeOff : Eye, {
+                          size: "23",
+                        })}
                       </button>
                     </div>
                     <FormMessage className="font-normal" />
+                    {Object.values(form.formState.errors).length === 1 && (
+                      <span className="text-sm text-red-500 dark:text-red-900">
+                        {Object.values(form.formState.errors)[0].message}
+                      </span>
+                    )}
                   </FormItem>
                 )}
               />

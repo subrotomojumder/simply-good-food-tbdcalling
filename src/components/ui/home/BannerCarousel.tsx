@@ -16,9 +16,9 @@ const BannerCarousel = ({ images }: TCarouselProps) => {
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
-            <div>
-              <div className="h-full w-full border-[30px] lg:border-[50px] border-[linear-gradient(to bottom, #33ccff 100%, #ff99cc 42%)] rounded-full shadow p-7 lg:p-10">
-                <div className="rounded-full bg-none border shadow">
+            <div className="h-full w-full rounded-full shadow p-[8.2%] bg-gradient-to-b from-[#6fb162] via-[#80be74] to-[#8dbb84]">
+              <div className="h-full w-full rounded-full shadow-inner bg-gray-100/95 p-[10%]">
+                <div className="rounded-full bg-none border-8 shadow">
                   <Image
                     src={image}
                     className="rounded-full"
@@ -34,8 +34,8 @@ const BannerCarousel = ({ images }: TCarouselProps) => {
       </CarouselContent>
 
       <div>
-        <CarouselPrevious className="absolute top-[49.8%] left-[1.5%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white" />
-        <CarouselNext className="absolute top-[49.8%] right-[1%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white" />
+        <CarouselPrevious className="absolute top-[49.8%] left-[1.5%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white shadow-sm" />
+        <CarouselNext className="absolute top-[49.8%] right-[1%] border-none bg-[#8ec285] hover:bg-[#62b354] text-white shadow-sm" />
       </div>
     </Carousel>
   );
